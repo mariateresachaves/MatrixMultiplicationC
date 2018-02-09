@@ -8,20 +8,38 @@
 
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
+
+#include "randMatrix.h"
 
 int main(int argc, const char * argv[]) {
     int n = 700;
-    int matrix_A[n][n];
-    int  matrix_B[n][n];
-    int result1[n][n];
-    int result2[n][n];
     
-    for(int i = 0; i<n; i++) {
-        for(int j = 0; j<n; j++) {
-            matrix_A[i][j] = 2;
-            matrix_B[i][j] = 2;
-        }
-    }
+    // Result matrices inicialization
+    int **result1;
+    result1 = malloc(n*(sizeof(*result1)));
+    for (int i=0; i<n; i++)
+        result1[i] = malloc(n*(sizeof(*result1[i])));
+    
+    int **result2;
+    result2 = malloc(n*(sizeof(*result2)));
+    for (int i=0; i<n; i++)
+        result2[i] = malloc(n*(sizeof(*result2[i])));
+    
+    // Matrices to operate inicialization
+    int **matrix_A;
+    matrix_A = malloc(n*(sizeof(*matrix_A)));
+    for (int i=0; i<n; i++)
+        matrix_A[i] = malloc(n*(sizeof(*matrix_A[i])));
+    
+    int **matrix_B;
+    matrix_B = malloc(n*(sizeof(*matrix_B)));
+    for (int i=0; i<n; i++)
+        matrix_B[i] = malloc(n*(sizeof(*matrix_B[i])));
+    
+    // Fill 2 matrices with random values between 1 and 100
+    randMatrix(matrix_A, n);
+    randMatrix(matrix_B, n);
     
     clock_t begin1 = clock();
     
