@@ -68,5 +68,22 @@ int main(int argc, const char * argv[]) {
     printf("--- 1st Time: %f seconds ---\n", (double)(end1 - begin1) / CLOCKS_PER_SEC);
     printf("--- 2nd Time: %f seconds ---\n", (double)(end2 - begin2) / CLOCKS_PER_SEC);
     
+    // Free matrices space
+    for (int i=0; i<n; i++)
+        free(result1[i]);
+    free(result1);
+    
+    for (int i=0; i<n; i++)
+        free(result2[i]);
+    free(result2);
+    
+    for (int i=0; i<n; i++)
+        free(matrix_A[i]);
+    free(matrix_A);
+    
+    for (int i=0; i<n; i++)
+        free(matrix_B[i]);
+    free(matrix_B);
+    
     return 0;
 }
